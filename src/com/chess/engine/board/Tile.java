@@ -11,7 +11,7 @@ public abstract class Tile {
     // final: to makes it a constant-Immutable 
     protected final int tileCoordinate;
 
-    private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPossibleEmptyTiles();
+    private static final Map<Integer, EmptyTile> EMPTY_TILES_CACHE = createAllPossibleEmptyTiles();
 
     private Tile (int tileCoordinate) {
         this.tileCoordinate = tileCoordinate;
@@ -28,7 +28,7 @@ public abstract class Tile {
     }
 
     public static Tile createTile(final int tileCoordinate, final Piece piece) {
-        return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES.get(tileCoordinate);
+        return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES_CACHE.get(tileCoordinate);
     }
 
     public abstract boolean isTileOccupied();

@@ -10,6 +10,8 @@ import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.board.Move.AttackMove;
+import com.chess.engine.board.Move.MajorMove;
 
 public class Knight extends Piece {
     private final static int[] CANDIDATE_MOVE_COORDINATE = { -17, -15, -10, -6, 6, 10, 15, 17 };
@@ -19,7 +21,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public Collection<Move> calculateLegalMoves(Board board) {
+    public Collection<Move> calculateLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int currentCandidateOffset: CANDIDATE_MOVE_COORDINATE) {
             // can also be declared outside.
@@ -37,14 +39,14 @@ public class Knight extends Piece {
 
                 if (!candidateDestinationTile.isTileOccupied()) {
                     // non-attacking move
-                    legalMoves.add(new Move());
+                    legalMoves.add(new MajorMove(board, this, candidateDestinationCooridnate));
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
 
                     if (this.pieceAlliance != pieceAlliance) {
                         // enemy piece - attacking move
-                        legalMoves.add(new Move());
+                        legalMoves.add(new AttackMove(board, this, candidateDestinationCooridnate, pieceAtDestination));
                     }
                 }
             }

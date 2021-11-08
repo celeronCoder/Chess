@@ -59,7 +59,7 @@ public class Bishop extends Piece {
     }
 
     private static boolean isFirstColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return (BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -9) || (currentCandidate == 7)));
+        return BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -9) || (currentCandidate == 7));
     }
 
     private static boolean isEighthColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {

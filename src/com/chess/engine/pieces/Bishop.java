@@ -58,11 +58,11 @@ public class Bishop extends Piece {
         return Collections.unmodifiableList(legalMoves);
     }
 
-    private static boolean isFirstColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -9) || (currentCandidate == 7));
+    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
+        return BoardUtils.FIRST_COLUMN[candidateOffset] && ((currentPosition == -9) || (currentPosition == 7));
     }
 
-    private static boolean isEighthColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.EIGHTH_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -7) || (currentCandidate == 9));
+    private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset) {
+        return BoardUtils.EIGHTH_COLUMN[candidateOffset] && ((currentPosition == -7) || (currentPosition == 9));
     }
 }

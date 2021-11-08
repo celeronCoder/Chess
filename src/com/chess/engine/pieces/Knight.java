@@ -25,9 +25,9 @@ public class Knight extends Piece {
         final List<Move> legalMoves = new ArrayList<>();
         for (final int currentCandidateOffset: CANDIDATE_MOVE_COORDINATE) {
             // can also be declared outside.
-            int candidateDestinationCooridinate = this.piecePosition + currentCandidateOffset;
+            int candidateDestinationCoordinate = this.piecePosition + currentCandidateOffset;
 
-            if (BoardUtils.isValidTileCoordinate(candidateDestinationCooridinate)) {
+            if (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                 if (isFirstColumnExclusion(this.piecePosition, currentCandidateOffset) || 
                     isSecondColumnExclusion(this.piecePosition, currentCandidateOffset) || 
                     isSeventhColumnExclusion(this.piecePosition, currentCandidateOffset) || 
@@ -35,18 +35,18 @@ public class Knight extends Piece {
                     continue;
                 }
 
-                final Tile candidateDestinationTile = board.getTile(candidateDestinationCooridinate);
+                final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
                 if (!candidateDestinationTile.isTileOccupied()) {
                     // non-attacking move
-                    legalMoves.add(new MajorMove(board, this, candidateDestinationCooridinate));
+                    legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
                 } else {
                     final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                     final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
 
                     if (this.pieceAlliance != pieceAlliance) {
                         // enemy piece - attacking move
-                        legalMoves.add(new AttackMove(board, this, candidateDestinationCooridinate, pieceAtDestination));
+                        legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
                     }
                 }
             }

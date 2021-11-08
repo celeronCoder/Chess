@@ -13,11 +13,12 @@ import com.chess.engine.board.Tile;
 import com.chess.engine.board.Move.AttackMove;
 import com.chess.engine.board.Move.MajorMove;
 
-public class Bishop extends Piece {
+public class Rook extends Piece {
 
-    private final static int[] CANDIDATE_MOVE_COORDINATES = { -9, -7, 7, 9 };
+    private final static int[] CANDIDATE_MOVE_COORDINATES = { -8, -1, 1, 8 };
 
-    Bishop(int piecePosition, Alliance pieceAlliance) {
+
+    Rook(final int piecePosition, final Alliance pieceAlliance) {
         super(piecePosition, pieceAlliance);
     }
 
@@ -59,10 +60,11 @@ public class Bishop extends Piece {
     }
 
     private static boolean isFirstColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -9) || (currentCandidate == 7));
+        return BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && (currentCandidate == -1);
     }
 
     private static boolean isEighthColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.EIGHTH_COLUMN[candidateDestinationCoordinate] && ((currentCandidate == -7) || (currentCandidate == 9));
+        return BoardUtils.EIGHTH_COLUMN[candidateDestinationCoordinate] && (currentCandidate == 1);
     }
+    
 }

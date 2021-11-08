@@ -59,12 +59,12 @@ public class Rook extends Piece {
         return Collections.unmodifiableList(legalMoves);
     }
 
-    private static boolean isFirstColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.FIRST_COLUMN[candidateDestinationCoordinate] && (currentCandidate == -1);
+    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
+        return BoardUtils.FIRST_COLUMN[candidateOffset] && (currentPosition == -1);
     }
 
-    private static boolean isEighthColumnExclusion(final int currentCandidate, final int candidateDestinationCoordinate) {
-        return BoardUtils.EIGHTH_COLUMN[candidateDestinationCoordinate] && (currentCandidate == 1);
+    private static boolean isEighthColumnExclusion(final int currentPosition, final int candidateOffset) {
+        return BoardUtils.EIGHTH_COLUMN[candidateOffset] && (currentPosition == 1);
     }
     
 }
